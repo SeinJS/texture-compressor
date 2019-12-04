@@ -31,8 +31,6 @@ export const spawnProcess = (
         console.log(`Using flags: ${combinedFlags}`);
       }
 
-      console.log(binDir);
-
       const child = spawn(toolPath, combinedFlags, {
         // @ts-ignore
         env: {

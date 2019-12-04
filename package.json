@@ -1,6 +1,6 @@
 {
   "name": "seinjs-texture-compressor",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "CLI tool for texture compression using ASTC, ETC, PVRTC and S3TC in a KTX container.",
   "main": "dist/cli/lib/index.js",
   "types": "dist/types/lib/index.d.ts",
