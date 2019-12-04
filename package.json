@@ -1,5 +1,5 @@
 {
-  "name": "texture-compressor",
+  "name": "seinjs-texture-compressor",
   "version": "1.0.2",
   "description": "CLI tool for texture compression using ASTC, ETC, PVRTC and S3TC in a KTX container.",
   "main": "dist/cli/lib/index.js",
@@ -8,16 +8,18 @@
     "start": "tsc -w",
     "lint": "tslint --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
-    "build": "tsc"
+    "build": "tsc",
+    "prepublish": "npm run build"
   },
   "bin": {
-    "texture-compressor": "./bin/texture-compressor.js"
+    "seinjs-texture-compressor": "./bin/texture-compressor.js"
   },
   "author": "Tim van Scherpenzeel",
   "license": "MIT",
   "dependencies": {
     "argparse": "^1.0.10",
-    "image-size": "^0.7.4"
+    "image-size": "^0.7.4",
+    "systeminformation": "^4.16.0"
   },
   "devDependencies": {
     "@types/argparse": "^1.0.36",

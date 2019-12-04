@@ -1,5 +1,11 @@
 # Texture Compressor
 
+This project forks from [texture-compress](https://github.com/TimvanScherpenzeel/texture-compressor) for adding 'CentOS 7' support.
+
+```sh
+npm i seinjs-texture-compressor --save-dev
+```
+
 [![npm version](https://badge.fury.io/js/texture-compressor.svg)](https://badge.fury.io/js/texture-compressor)
 
 CLI tool for texture compression using ASTC, ETC, PVRTC and S3TC in a KTX container.

@@ -1,6 +1,7 @@
 // Native
 import { platform } from 'os';
 import { basename, join, parse } from 'path';
+import si from 'systeminformation';
 
 // Vendor
 // @ts-ignore
@@ -9,7 +10,19 @@ import imageSize from 'image-size';
 /**
  * Get the /bin/ directory from the root of the project
  */
-export const getBinaryDirectory = (): string => join(__dirname, '../../../bin/', platform());
+export const getBinaryDirectory = async (): Promise<string> => {
+  let plat = platform() as string;
+
+  if (plat === 'linux') {
+    const {distro, release, kernel} = await si.osInfo();
+    
+    if ((/CentOS/g.test(distro) || /alios7/g.test(kernel)) && (~~parseFloat(release) === 7)) {
+      plat = 'centos7';
+    }
+  }
+
+  return join(__dirname, '../../../bin/', plat)
+};
 
 /**
  * Get a file extension from a file path (without a file basename)

@@ -20,20 +20,23 @@ export const spawnProcess = (
   flagMapping: string[],
   binaryName: string
 ): Promise<any> => {
-  const toolPath = join(getBinaryDirectory(), binaryName);
-  const toolFlags = args.flags ? splitFlagAndValue(createFlagsForTool(args.flags)) : [];
-  const combinedFlags = [...flagMapping, ...toolFlags];
-
   return new Promise(
-    (resolve, reject): void => {
+    async (resolve, reject): Promise<void> => {
+      const binDir = await getBinaryDirectory();
+      const toolPath = join(binDir, binaryName);
+      const toolFlags = args.flags ? splitFlagAndValue(createFlagsForTool(args.flags)) : [];
+      const combinedFlags = [...flagMapping, ...toolFlags];
+
       if (args.verbose) {
         console.log(`Using flags: ${combinedFlags}`);
       }
 
+      console.log(binDir);
+
       const child = spawn(toolPath, combinedFlags, {
         // @ts-ignore
         env: {
-          PATH: getBinaryDirectory() || process.env,
+          PATH: binDir || process.env,
         },
       });
 
